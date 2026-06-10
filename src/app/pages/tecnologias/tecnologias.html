@@ -1,0 +1,35 @@
+<section class="technologies editorial-section panel-frame" id="tecnologias">
+    <aside class="rail technologies__rail" aria-hidden="true" style="--rail-color: var(--orange)">
+        <span class="rail__number">03</span>
+        <span class="rail__word">Tecnologías</span>
+        <span class="rail__barcode"></span>
+        <span class="rail__orb"></span>
+    </aside>
+
+    <div class="technologies__content">
+        <header class="technologies__header">
+            <div>
+                <p class="section-label technologies__label">Mi stack principal</p>
+                <h2 class="section-title">Tecnologías</h2>
+            </div>
+
+            <aside class="technologies__learning">
+                <strong>Siempre aprendiendo</strong>
+                <span aria-hidden="true"><i></i></span>
+            </aside>
+        </header>
+
+        <div class="technologies__grid" aria-label="Tecnologías que manejo">
+            @for (tech of technologies; track tech.name) {
+            <article class="tech-card" [style.--tech-color]="tech.color">
+                <div class="tech-card__icon" aria-hidden="true">
+                    {{ tech.symbol }}
+                </div>
+
+                <h3>{{ tech.name }}</h3>
+                <p>{{ tech.description }}</p>
+            </article>
+            }
+        </div>
+    </div>
+</section>

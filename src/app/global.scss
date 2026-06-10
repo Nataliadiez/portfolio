@@ -1,0 +1,322 @@
+:root {
+  --font-title: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-tech: 'IBM Plex Mono', 'Cascadia Mono', 'Consolas', monospace;
+
+  --paper: #d8cecd;
+  --paper-soft: #e7dedd;
+  --paper-warm: #efe7df;
+  --ink: #101010;
+  --ink-soft: #3e3939;
+  --muted: #6f6765;
+  --line: rgba(17, 17, 17, 0.48);
+  --line-strong: #141111;
+
+  --teal: #2fb8ac;
+  --teal-dark: #087f78;
+  --pink: #d64d80;
+  --orange: #ef5a24;
+  --sand: #f4ebe5;
+  --gray: #a5a5a3;
+  --white: #fff9f2;
+
+  --container-width: 1320px;
+  --header-height: 5.7rem;
+  --radius-sm: 0.45rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.35rem;
+  --transition-fast: 180ms ease;
+  --transition-base: 260ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--font-body);
+  background:
+    linear-gradient(rgba(20, 17, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 17, 17, 0.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 32px 32px;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+::selection {
+  color: var(--white);
+  background: var(--pink);
+}
+
+/* =========================
+   GLOBAL HELPERS
+========================= */
+
+.container {
+  width: min(100% - 2rem, var(--container-width));
+  margin-inline: auto;
+}
+
+.editorial-section {
+  position: relative;
+  width: min(100% - 2rem, var(--container-width));
+  margin-inline: auto;
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
+.panel-frame {
+  position: relative;
+  border: 1px solid var(--line);
+  background: rgba(239, 231, 223, 0.32);
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+
+.panel-frame::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  border: 1px solid rgba(16, 16, 16, 0.18);
+  clip-path: inherit;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 0.7rem;
+  color: var(--teal-dark);
+  font-family: var(--font-tech);
+  font-size: clamp(0.72rem, 1vw, 0.84rem);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  width: 42px;
+  height: 6px;
+  background: repeating-linear-gradient(110deg, currentColor 0 4px, transparent 4px 8px);
+}
+
+.section-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.barcode {
+  width: 118px;
+  height: 32px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0 2px,
+    transparent 2px 5px,
+    var(--ink) 5px 7px,
+    transparent 7px 11px
+  );
+}
+
+.dot-grid {
+  width: 44px;
+  height: 44px;
+  opacity: 0.42;
+  background: radial-gradient(var(--ink) 1.5px, transparent 1.8px);
+  background-size: 10px 10px;
+}
+
+.tech-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.25rem;
+  padding: 0 1.25rem;
+  color: var(--white);
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--pink);
+  border: 1px solid var(--line-strong);
+  box-shadow: inset -5px -5px 0 rgba(16, 16, 16, 0.13);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.tech-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 66px;
+  border-right: 1px solid var(--line);
+  background: rgba(231, 222, 221, 0.78);
+}
+
+.rail__number {
+  display: grid;
+  place-items: center;
+  height: 68px;
+  color: var(--ink);
+  font-family: var(--font-tech);
+  font-size: 1.55rem;
+  font-weight: 950;
+  background: var(--rail-color, var(--pink));
+  border-bottom: 1px solid var(--line-strong);
+  clip-path: polygon(0 0, 100% 0, 100% 72%, 74% 100%, 0 100%);
+}
+
+.rail__word {
+  display: grid;
+  place-items: center;
+  min-height: 190px;
+  color: var(--ink);
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.rail__barcode {
+  width: 28px;
+  height: 82px;
+  margin: 0 auto 2rem;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0 2px,
+    transparent 2px 4px,
+    var(--ink) 4px 5px,
+    transparent 5px 8px
+  );
+}
+
+.rail__orb {
+  width: 38px;
+  height: 24px;
+  margin-inline: auto;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  position: relative;
+}
+
+.rail__orb::before,
+.rail__orb::after {
+  content: '';
+  position: absolute;
+  inset: 3px 8px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+
+.rail__orb::after {
+  inset: 7px 14px;
+  background: var(--ink);
+}
+
+@media (max-width: 860px) {
+  :root {
+    --header-height: 4.95rem;
+  }
+
+  .editorial-section {
+    width: min(100% - 1rem, var(--container-width));
+  }
+
+  .rail {
+    width: 52px;
+  }
+
+  .rail__number {
+    height: 56px;
+    font-size: 1.25rem;
+  }
+
+  .rail__word {
+    min-height: 150px;
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+  }
+}
+
+@media (max-width: 620px) {
+  body {
+    background-size: 24px 24px;
+  }
+
+  .rail {
+    position: relative;
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: stretch;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rail__number {
+    width: 64px;
+    height: 100%;
+  }
+
+  .rail__word {
+    min-height: 0;
+    padding-inline: 1rem;
+    writing-mode: initial;
+    letter-spacing: 0.18em;
+  }
+
+  .rail__barcode,
+  .rail__orb {
+    display: none;
+  }
+}

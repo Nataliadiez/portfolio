@@ -1,0 +1,60 @@
+<section class="contact editorial-section panel-frame" id="contacto">
+    <aside class="rail contact__rail" aria-hidden="true" style="--rail-color: var(--pink)">
+        <span class="rail__number">04</span>
+        <span class="rail__word">Contacto</span>
+        <span class="rail__barcode"></span>
+        <span class="rail__orb"></span>
+    </aside>
+
+    <div class="contact__content">
+        <article class="contact__cta">
+            <span class="contact__mail" aria-hidden="true">✉</span>
+            <h2>¿Tenés un proyecto en mente?</h2>
+            <p>Hablemos y veamos cómo podemos construir algo increíble.</p>
+            <a class="contact__button" href="mailto:hola@natt.dev">
+                Escribirme
+                <span aria-hidden="true">→</span>
+            </a>
+        </article>
+
+        <div class="contact__cards">
+            <div class="contact__topline" aria-hidden="true">
+                <span class="barcode"></span>
+                <strong>Let's build the future together</strong>
+            </div>
+
+            @for (item of contactInfo; track item.label) {
+            <article class="contact-card">
+                <span class="contact-card__icon" aria-hidden="true">{{ item.icon }}</span>
+                <div>
+                    <h3>{{ item.label }}</h3>
+                    @if (item.href) {
+                    <a [href]="item.href" target="_blank" rel="noreferrer">{{ item.value }}</a>
+                    } @else {
+                    <p>{{ item.value }}</p>
+                    }
+                </div>
+            </article>
+            }
+        </div>
+
+        <aside class="contact__stripe" aria-hidden="true"></aside>
+    </div>
+</section>
+
+<footer class="site-footer editorial-section">
+    <div class="site-footer__brand">
+        <span aria-hidden="true"></span>
+        <strong>NATT.DEV</strong>
+        <small>Code · Build · Deploy · Repeat</small>
+    </div>
+
+    <p>© 2024 Natalia Diez. Todos los derechos reservados.</p>
+
+    <div class="site-footer__socials">
+        <span>Hecho con ♥ y mucho café</span>
+        <a href="https://github.com/natt-diez" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+        <a href="https://linkedin.com/in/natt-diez" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+        <a href="#inicio" aria-label="Volver al inicio">↑</a>
+    </div>
+</footer>

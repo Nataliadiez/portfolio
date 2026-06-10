@@ -1,0 +1,66 @@
+<section class="projects editorial-section panel-frame" id="proyectos">
+    <aside class="rail projects__rail" aria-hidden="true" style="--rail-color: var(--teal)">
+        <span class="rail__number">02</span>
+        <span class="rail__word">Proyectos</span>
+        <span class="rail__barcode"></span>
+        <span class="rail__orb"></span>
+    </aside>
+
+    <div class="projects__content">
+        <header class="projects__header">
+            <div>
+                <p class="section-label">Trabajos destacados</p>
+                <h2 class="section-title">Proyectos recientes</h2>
+            </div>
+
+            <a class="projects__view-all" href="#contacto">
+                Ver todos
+                <span>+</span>
+            </a>
+            <span class="dot-grid" aria-hidden="true"></span>
+        </header>
+
+        <div class="projects__grid">
+            @for (project of projects; track project.title) {
+            <article class="project-card" [class.project-card--pink]="project.accent === 'pink'"
+                [class.project-card--orange]="project.accent === 'orange'"
+                [class.project-card--teal]="project.accent === 'teal'">
+                <div class="project-card__topline">
+                    <span>{{ project.code }}</span>
+                    <small>{{ project.category }}</small>
+                </div>
+
+                <div class="project-card__preview" [class.project-card__preview--almicida]="project.preview === 'almicida'"
+                    [class.project-card__preview--cg]="project.preview === 'cg'"
+                    [class.project-card__preview--dashboard]="project.preview === 'dashboard'">
+                    @if (project.preview !== 'dashboard') {
+                    <strong>{{ project.preview === 'almicida' ? 'ALMICIDA' : 'CG' }}</strong>
+                    <span>{{ project.preview === 'almicida' ? 'TECNOLOGÍA PARA EL CONTROL PROFESIONAL' : 'PRODUCCIONES' }}</span>
+                    } @else {
+                    <div class="dashboard-preview" aria-hidden="true">
+                        <i></i><i></i><i></i>
+                        <span></span>
+                        <strong></strong>
+                    </div>
+                    }
+                </div>
+
+                <div class="project-card__body">
+                    <h3>
+                        {{ project.title }}
+                        <span aria-hidden="true">→</span>
+                    </h3>
+
+                    <p>{{ project.description }}</p>
+
+                    <div class="project-card__tags">
+                        @for (tag of project.tags; track tag) {
+                        <span>{{ tag }}</span>
+                        }
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+    </div>
+</section>

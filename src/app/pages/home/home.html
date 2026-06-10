@@ -1,0 +1,73 @@
+<section class="home editorial-section panel-frame" id="inicio">
+    <aside class="rail home__rail" aria-hidden="true" style="--rail-color: var(--pink)">
+        <span class="rail__number">01</span>
+        <span class="rail__word">Welcome</span>
+        <span class="rail__barcode"></span>
+        <span class="rail__orb"></span>
+    </aside>
+
+    <main class="home__layout">
+        <div class="home__copy">
+            <p class="section-label home__eyebrow">Fullstack Developer</p>
+
+            <h1 class="home__title">
+                <span>Desarrollo de</span>
+                <strong>sistemas escalables</strong>
+            </h1>
+
+            <p class="home__description">
+                Diseño y construyo aplicaciones web robustas, eficientes y con foco en la experiencia de usuario.
+                Transformo ideas complejas en soluciones simples, rápidas y confiables.
+            </p>
+
+            <div class="home__actions">
+                <a class="tech-button home__button" href="#proyectos">
+                    <span aria-hidden="true">→</span>
+                    Ver proyectos
+                </a>
+
+                <article class="home__availability">
+                    <span class="home__status-dot" aria-hidden="true"></span>
+
+                    <div>
+                        <strong>Disponible para trabajos</strong>
+                        <small>Remotos / Freelance / Sistemas a medida</small>
+                    </div>
+
+                    <span class="home__mini-globe" aria-hidden="true"></span>
+                </article>
+            </div>
+        </div>
+
+        <aside class="home__visual" aria-label="Ilustración futurista backend N-10">
+            <img src="/bg-home.png" alt="Robot futurista N-10 con panel backend para portfolio fullstack"
+                loading="eager" fetchpriority="high">
+        </aside>
+    </main>
+</section>
+
+<section class="about-strip editorial-section" id="sobre-mi" aria-label="Sobre mí resumido">
+    <article class="about-strip__card">
+        <span class="about-strip__tag">Backend-focused</span>
+        <p>
+            Construyo productos web con cabeza de sistema: arquitectura clara, APIs sólidas,
+            datos bien tratados y una interfaz que no parezca hecha a las tres de la mañana con café vencido.
+        </p>
+    </article>
+
+    <article class="about-strip__card">
+        <span class="about-strip__tag">Stack actual</span>
+        <p>Angular, NestJS, TypeScript, bases de datos SQL/NoSQL, Docker y automatizaciones.</p>
+    </article>
+
+    <article class="about-strip__card about-strip__card--accent">
+        <span class="barcode" aria-hidden="true"></span>
+        <p>Build · Code · Deploy · Repeat</p>
+    </article>
+</section>
+
+<app-proyectos />
+
+<app-tecnologias />
+
+<app-contacto />
