@@ -1,13 +1,15 @@
 .technologies {
+  width: 98%;
   margin-top: 1rem;
   overflow: hidden;
-  min-width: 98%;
 }
 
 .technologies__content {
   position: relative;
   padding: clamp(2rem, 3.8vw, 3rem) clamp(1.2rem, 3.6vw, 2.6rem) clamp(1.8rem, 3vw, 2.4rem) 96px;
 }
+
+/* ========================= HEADER ========================= */
 
 .technologies__header {
   display: flex;
@@ -51,30 +53,41 @@
   background: var(--teal);
 }
 
+/* ========================= GRID ========================= */
+
 .technologies__grid {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
   gap: 1rem;
 }
 
+/* ========================= TECH CARD FLIP ========================= */
+
 .tech-card {
   --tech-color: var(--teal);
-  --card-border: 1px;
   --card-cut: 16px;
-  --card-corner: 11.31px;
   --card-gap: 32px;
+  --card-line: color-mix(in srgb, var(--ink) 42%, transparent);
+  --card-bg: rgba(239, 231, 223, 0.34);
 
   position: relative;
   isolation: isolate;
-  min-height: 156px;
-  display: grid;
-  justify-items: center;
-  align-content: center;
-  gap: 0.62rem;
-  padding: 1rem 0.75rem;
-  text-align: center;
-  background: rgba(239, 231, 223, 0.27);
-  border: 0;
+  min-height: 220px;
+  perspective: 1200px;
+  cursor: default;
+
+  transition: transform var(--transition-fast);
+}
+
+/* Sombra separada para que no deforme el flip */
+.tech-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: var(--tech-color);
 
   clip-path: polygon(
     var(--card-cut) 0,
@@ -87,95 +100,213 @@
     0 var(--card-cut)
   );
 
+  transform: translate(0, 0);
   transition:
-    transform var(--transition-fast),
-    filter var(--transition-fast),
-    background var(--transition-fast);
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
 }
 
-.tech-card::before {
+.tech-card:hover::before {
+  opacity: 0.35;
+  transform: translate(4px, 4px);
+}
+
+.tech-card__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  transform-style: preserve-3d;
+
+  transition: transform 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tech-card:hover .tech-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* ========================= CARD FACES ========================= */
+
+.tech-card__face {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.72rem;
+
+  padding: 1rem 0.85rem;
+  text-align: center;
+
+  background: var(--card-bg);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  clip-path: polygon(
+    var(--card-cut) 0,
+    calc(100% - var(--card-cut)) 0,
+    100% var(--card-cut),
+    100% calc(100% - var(--card-cut)),
+    calc(100% - var(--card-cut)) 100%,
+    var(--card-cut) 100%,
+    0 calc(100% - var(--card-cut)),
+    0 var(--card-cut)
+  );
+}
+
+/* Borde octagonal real */
+.tech-card__face::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
 
-  background: color-mix(in srgb, var(--ink) 46%, transparent);
-
-  --g1: #000 var(--card-border), #0000 0 calc(100% - var(--card-border)), #000 0;
-
-  --g2:
-    #0000 var(--card-corner), #000 0 calc(var(--card-corner) + var(--card-border)),
-    #0000 0 calc(100% - var(--card-corner) - var(--card-border)),
-    #000 0 calc(100% - var(--card-corner)), #0000 0;
-
-  -webkit-mask:
-    linear-gradient(45deg, var(--g2)),
-    linear-gradient(-45deg, var(--g2)),
-    linear-gradient(90deg, var(--g1)) 50% / 100% calc(100% - var(--card-gap)) no-repeat,
-    linear-gradient(180deg, var(--g1)) 50% / calc(100% - var(--card-gap)) 100% no-repeat;
-
-  mask:
-    linear-gradient(45deg, var(--g2)),
-    linear-gradient(-45deg, var(--g2)),
-    linear-gradient(90deg, var(--g1)) 50% / 100% calc(100% - var(--card-gap)) no-repeat,
-    linear-gradient(180deg, var(--g1)) 50% / calc(100% - var(--card-gap)) 100% no-repeat;
+  background:
+    /* superior */
+    linear-gradient(var(--card-line) 0 0) var(--card-cut) 0 / calc(100% - var(--card-gap)) 1px
+      no-repeat,
+    /* derecha */ linear-gradient(var(--card-line) 0 0) 100% var(--card-cut) / 1px
+      calc(100% - var(--card-gap)) no-repeat,
+    /* inferior */ linear-gradient(var(--card-line) 0 0) var(--card-cut) 100% /
+      calc(100% - var(--card-gap)) 1px no-repeat,
+    /* izquierda */ linear-gradient(var(--card-line) 0 0) 0 var(--card-cut) / 1px
+      calc(100% - var(--card-gap)) no-repeat,
+    /* diagonal superior izquierda */
+    linear-gradient(
+        135deg,
+        transparent calc(50% - 0.8px),
+        var(--card-line) 0 calc(50% + 0.8px),
+        transparent 0
+      )
+      0 0 / var(--card-cut) var(--card-cut) no-repeat,
+    /* diagonal superior derecha */
+    linear-gradient(
+        45deg,
+        transparent calc(50% - 0.8px),
+        var(--card-line) 0 calc(50% + 0.8px),
+        transparent 0
+      )
+      100% 0 / var(--card-cut) var(--card-cut) no-repeat,
+    /* diagonal inferior derecha */
+    linear-gradient(
+        135deg,
+        transparent calc(50% - 0.8px),
+        var(--card-line) 0 calc(50% + 0.8px),
+        transparent 0
+      )
+      100% 100% / var(--card-cut) var(--card-cut) no-repeat,
+    /* diagonal inferior izquierda */
+    linear-gradient(
+        45deg,
+        transparent calc(50% - 0.8px),
+        var(--card-line) 0 calc(50% + 0.8px),
+        transparent 0
+      )
+      0 100% / var(--card-cut) var(--card-cut) no-repeat;
 }
 
-.tech-card::after {
-  content: '';
-  order: -1;
+.tech-card__face > * {
   position: relative;
   z-index: 2;
-  width: 64px;
+}
+
+.tech-card__face--front {
+  transform: rotateY(0deg);
+}
+
+.tech-card__face--back {
+  transform: rotateY(180deg);
+  background: color-mix(in srgb, var(--tech-color) 11%, var(--paper-soft));
+}
+
+/* ========================= CARD CONTENT ========================= */
+
+.tech-card__accent {
+  width: 68px;
   height: 4px;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.18rem;
   background: var(--tech-color);
-  box-shadow: 0 0 16px color-mix(in srgb, var(--tech-color) 40%, transparent);
-}
-
-.tech-card:hover {
-  transform: translate(-3px, -3px);
-  background: rgba(239, 231, 223, 0.5);
-  filter: drop-shadow(6px 6px 0 var(--ink));
-}
-
-.tech-card:hover::before {
-  --card-border: 2px;
-
-  background: linear-gradient(135deg, var(--tech-color), var(--pink) 52%, var(--orange));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--tech-color) 42%, transparent);
 }
 
 .tech-card__icon {
-  width: 58px;
-  height: 58px;
+  width: 76px;
+  height: 76px;
+
   display: grid;
   place-items: center;
-  color: var(--white);
-  font-family: var(--font-title);
-  font-size: 1.35rem;
-  font-weight: 950;
-  line-height: 1;
-  background: var(--tech-color);
-  border: 1px solid var(--line-strong);
-  box-shadow: inset -5px -5px 0 rgba(16, 16, 16, 0.14);
+
+  padding: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--tech-color) 8%, rgba(255, 255, 255, 0.5));
+}
+
+.tech-card__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tech-card--sql .tech-card__icon {
+  width: 82px;
+  height: 82px;
+  padding: 0.55rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--tech-color) 8%, rgba(255, 255, 255, 0.5));
+}
+
+.tech-card--sql .tech-card__icon img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  object-position: center;
+  transform: translateY(-5px);
+}
+
+.tech-card--sql h3 {
+  letter-spacing: -0.02em;
 }
 
 .tech-card h3 {
   margin: 0;
+  color: var(--ink);
   font-family: var(--font-title);
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   font-weight: 850;
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
 .tech-card p {
-  max-width: 110px;
+  max-width: 145px;
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.78rem;
-  line-height: 1.25;
+  font-size: 0.8rem;
+  line-height: 1.35;
 }
+
+.tech-card small {
+  display: block;
+  max-width: 145px;
+  color: var(--tech-color);
+  font-family: var(--font-tech);
+  font-size: 0.62rem;
+  font-weight: 850;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ========================= RESPONSIVE ========================= */
 
 @media (max-width: 1180px) {
   .technologies__grid {
@@ -200,10 +331,43 @@
   .technologies__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .tech-card,
+  .tech-card__inner {
+    min-height: 210px;
+  }
 }
 
 @media (max-width: 620px) {
   .technologies__content {
     padding: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .technologies__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Evita mareos / glitches en usuarios con motion reducido */
+@media (prefers-reduced-motion: reduce) {
+  .tech-card,
+  .tech-card::before,
+  .tech-card__inner {
+    transition: none;
+  }
+
+  .tech-card:hover {
+    transform: none;
+  }
+
+  .tech-card:hover::before {
+    opacity: 0;
+    transform: none;
+  }
+
+  .tech-card:hover .tech-card__inner {
+    transform: none;
   }
 }

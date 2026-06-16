@@ -1,0 +1,121 @@
+.sobre-mi {
+  width: 98%;
+  margin-top: 1.4rem;
+  overflow: hidden;
+}
+
+.sobre-mi__layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.8fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.6rem, 4vw, 3.5rem) clamp(3rem, 5vw, 4.5rem) 108px;
+}
+
+.sobre-mi__copy {
+  max-width: 720px;
+}
+
+.sobre-mi__eyebrow {
+  color: var(--teal-dark);
+}
+
+.sobre-mi__title {
+  max-width: 720px;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-home-display);
+  font-size: clamp(3rem, 5.8vw, 6rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.sobre-mi__title strong {
+  display: block;
+  color: var(--teal-dark);
+  font-weight: 800;
+}
+
+.sobre-mi__description {
+  max-width: 620px;
+  margin: 1.45rem 0 0;
+  color: var(--ink-soft);
+  font-family: var(--font-home-body);
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+
+.sobre-mi__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-self: center;
+}
+
+.sobre-mi__card {
+  min-height: 190px;
+  padding: 1.35rem;
+  background: rgba(239, 231, 223, 0.42);
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+}
+
+.sobre-mi__card--accent {
+  background: var(--teal);
+}
+
+.sobre-mi__card-kicker {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: var(--pink);
+  font-family: var(--font-home-tech);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sobre-mi__card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-title);
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.sobre-mi__card p {
+  margin: 0.85rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.sobre-mi__card--accent .sobre-mi__card-kicker,
+.sobre-mi__card--accent p {
+  color: var(--ink);
+}
+
+@media (max-width: 1080px) {
+  .sobre-mi__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-mi__cards {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 620px) {
+  .sobre-mi__layout {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .sobre-mi__cards {
+    grid-template-columns: 1fr;
+  }
+}

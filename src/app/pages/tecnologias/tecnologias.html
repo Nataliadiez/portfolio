@@ -21,13 +21,26 @@
 
         <div class="technologies__grid" aria-label="Tecnologías que manejo">
             @for (tech of technologies; track tech.name) {
-            <article class="tech-card" [style.--tech-color]="tech.color">
-                <div class="tech-card__icon" aria-hidden="true">
-                    {{ tech.symbol }}
-                </div>
+            <article class="tech-card" [class.tech-card--sql]="tech.name === 'SQL'" [style.--tech-color]="tech.color">
+                <div class="tech-card__inner">
+                    <div class="tech-card__face tech-card__face--front">
+                        <span class="tech-card__accent" aria-hidden="true"></span>
 
-                <h3>{{ tech.name }}</h3>
-                <p>{{ tech.description }}</p>
+                        <div class="tech-card__icon">
+                            <img [src]="tech.icon" [alt]="'Logo de ' + tech.name" />
+                        </div>
+
+                        <h3>{{ tech.name }}</h3>
+                    </div>
+
+                    <div class="tech-card__face tech-card__face--back">
+                        <span class="tech-card__accent" aria-hidden="true"></span>
+
+                        <h3>{{ tech.name }}</h3>
+                        <p>{{ tech.description }}</p>
+                        <small>{{ tech.category }}</small>
+                    </div>
+                </div>
             </article>
             }
         </div>

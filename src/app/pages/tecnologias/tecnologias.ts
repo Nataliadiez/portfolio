@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 type Technology = {
   name: string;
   description: string;
-  symbol: string;
+  category: string;
   color: string;
+  icon: string;
 };
 
 @Component({
@@ -13,14 +14,63 @@ type Technology = {
   styleUrl: './tecnologias.scss',
 })
 export class Tecnologias {
-  readonly technologies: Technology[] = [
-    { name: 'Angular', description: 'Frontend Framework', symbol: 'A', color: '#dd3446' },
-    { name: 'NestJS', description: 'Backend Framework', symbol: 'N', color: '#d64d80' },
-    { name: 'TypeScript', description: 'Lenguaje Tipado', symbol: 'TS', color: '#2878c6' },
-    { name: 'MongoDB', description: 'Base de datos NoSQL', symbol: 'M', color: '#2e9d4a' },
-    { name: 'PostgreSQL', description: 'Base de datos Relacional', symbol: 'PG', color: '#336791' },
-    { name: 'Docker', description: 'Contenedores y DevOps', symbol: 'D', color: '#2496ed' },
-    { name: 'Git', description: 'Control de Versiones', symbol: 'G', color: '#ef5a24' },
-    { name: 'Tailwind CSS', description: 'UI Utility-First', symbol: 'TW', color: '#2fb8ac' },
+  technologies: Technology[] = [
+    {
+      name: 'Supabase',
+      description: 'Auth, base de datos y servicios para construir backends ágiles.',
+      category: 'Backend as a Service',
+      color: '#3ecf8e',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648027/supabase_dxvsgv.png',
+    },
+    {
+      name: 'MongoDB',
+      description: 'Base de datos flexible para estructuras dinámicas y escalables.',
+      category: 'Base de datos NoSQL',
+      color: '#13aa52',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648027/mongo_f7nem7.png',
+    },
+    {
+      name: 'Angular',
+      description: 'Lo uso para interfaces administrativas y paneles funcionales.',
+      category: 'Frontend framework',
+      color: '#dd0031',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648027/angular_wrvmrb.png',
+    },
+    {
+      name: 'NestJS',
+      description: 'Framework backend ideal para APIs organizadas y mantenibles.',
+      category: 'Backend framework',
+      color: '#e0234e',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648027/nest_thsafo.png',
+    },
+    {
+      name: 'SQL',
+      description: 'Consultas, relaciones y modelado de datos para sistemas estructurados.',
+      category: 'Bases de datos relacionales',
+      color: '#2f80ed',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648027/sql_bboyaj.png',
+    },
+    {
+      name: 'Ionic',
+      description: 'Apps híbridas con una sola base de código.',
+      category: 'Apps multiplataforma',
+      color: '#3880ff',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648027/ionic_cs6sx5.png',
+    },
+    {
+      name: 'Express',
+      description: 'Servidor liviano para APIs y servicios web.',
+      category: 'Node.js framework',
+      color: '#444444',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648027/express_fiua4j.png',
+    },
+    {
+      name: 'Docker',
+      description:
+        'Contenedores para empaquetar, ejecutar y desplegar servicios de forma consistente.',
+      category: 'Contenedores / DevOps',
+      color: '#2496ed',
+      icon: 'https://res.cloudinary.com/dnwhbnsdi/image/upload/v1781648151/docker-icon_dfmx2o.png',
+    },
   ];
 }
