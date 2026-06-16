@@ -1,6 +1,7 @@
 .contact {
   margin-top: 1rem;
   overflow: hidden;
+  min-width: 98%;
 }
 
 .contact__content {
@@ -21,7 +22,14 @@
   color: var(--white);
   background: var(--pink);
   border: 1px solid var(--line-strong);
-  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  clip-path: polygon(
+    0 0,
+    calc(100% - 24px) 0,
+    100% 24px,
+    100% 100%,
+    24px 100%,
+    0 calc(100% - 24px)
+  );
 }
 
 .contact__mail {
@@ -134,7 +142,8 @@
 }
 
 .contact__stripe {
-  background: repeating-linear-gradient(45deg, var(--ink) 0 12px, transparent 12px 24px), var(--paper-soft);
+  background:
+    repeating-linear-gradient(45deg, var(--ink) 0 12px, transparent 12px 24px), var(--paper-soft);
   border: 1px solid var(--line-strong);
 }
 
@@ -150,6 +159,7 @@
   color: var(--ink);
   background: var(--teal);
   border: 1px solid var(--line-strong);
+  min-width: 98%;
 }
 
 .site-footer__brand {

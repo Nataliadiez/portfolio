@@ -1,18 +1,15 @@
 <header class="site-header">
     <button class="site-header__brand" type="button" aria-label="Ir al inicio" (click)="goToSection('inicio')">
-        <span class="site-header__emblem" aria-hidden="true"></span>
+        <img class="brand" src="./n.png" alt="">
+
         <span class="site-header__brand-copy">
             <strong>NATALIA DIEZ</strong>
             <small>SOFTWARE · SYSTEMS · SOLUTIONS</small>
         </span>
     </button>
 
-    <app-nav [activeSection]="activeSection" (sectionSelected)="goToSection($event)" />
-
-    <div class="site-header__meta" aria-hidden="true">
-        <span class="barcode"></span>
-        <span>BUILDING THE FUTURE</span>
-        <span class="site-header__plus">+</span>
+    <div class="site-header__nav">
+        <app-nav [activeSection]="activeSection" (sectionSelected)="goToSection($event)" />
     </div>
 
     <button class="site-header__menu-button" type="button" aria-label="Abrir menú"

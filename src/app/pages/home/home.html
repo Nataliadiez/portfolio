@@ -22,7 +22,9 @@
 
             <div class="home__actions">
                 <a class="tech-button home__button" href="#proyectos">
-                    <span aria-hidden="true">→</span>
+                    <span class="home__font-icon home__button-icon material-symbols-outlined" aria-hidden="true">
+                        arrow_forward
+                    </span>
                     Ver proyectos
                 </a>
 
@@ -31,40 +33,55 @@
 
                     <div>
                         <strong>Disponible para trabajos</strong>
-                        <small>Remotos / Freelance / Sistemas a medida</small>
+                        <small>Remotos / Freelance</small>
                     </div>
-
-                    <span class="home__mini-globe" aria-hidden="true"></span>
                 </article>
             </div>
+
+            <ul class="home__stats" aria-label="Indicadores profesionales">
+                <li class="home__stat">
+                    <span class="home__stat-icon material-symbols-outlined" aria-hidden="true">
+                        work_history
+                    </span>
+                    <strong>+4</strong>
+                    <span>Años<br>experiencia</span>
+                </li>
+
+                <li class="home__stat">
+                    <span class="home__stat-icon material-symbols-outlined" aria-hidden="true">
+                        done_outline
+                    </span>
+                    <strong>+20</strong>
+                    <span>Proyectos<br>completados</span>
+                </li>
+
+                <li class="home__stat">
+                    <span class="home__stat-icon material-symbols-outlined" aria-hidden="true">
+                        shield_with_heart
+                    </span>
+                    <strong>100%</strong>
+                    <span>Clientes<br>satisfechos</span>
+                </li>
+
+                <li class="home__stat">
+                    <span class="home__stat-icon material-symbols-outlined" aria-hidden="true">
+                        schedule
+                    </span>
+                    <strong>24/7</strong>
+                    <span>Enfoque en<br>soluciones</span>
+                </li>
+            </ul>
         </div>
 
         <aside class="home__visual" aria-label="Ilustración futurista backend N-10">
-            <img src="/bg-home.png" alt="Robot futurista N-10 con panel backend para portfolio fullstack"
-                loading="eager" fetchpriority="high">
+            <img class="home__robot-image" src="/bg-home.png"
+                alt="Robot futurista N-10 con panel backend para portfolio fullstack" width="1024" height="1024"
+                loading="eager" decoding="async" fetchpriority="high">
         </aside>
     </main>
 </section>
 
-<section class="about-strip editorial-section" id="sobre-mi" aria-label="Sobre mí resumido">
-    <article class="about-strip__card">
-        <span class="about-strip__tag">Backend-focused</span>
-        <p>
-            Construyo productos web con cabeza de sistema: arquitectura clara, APIs sólidas,
-            datos bien tratados y una interfaz que no parezca hecha a las tres de la mañana con café vencido.
-        </p>
-    </article>
-
-    <article class="about-strip__card">
-        <span class="about-strip__tag">Stack actual</span>
-        <p>Angular, NestJS, TypeScript, bases de datos SQL/NoSQL, Docker y automatizaciones.</p>
-    </article>
-
-    <article class="about-strip__card about-strip__card--accent">
-        <span class="barcode" aria-hidden="true"></span>
-        <p>Build · Code · Deploy · Repeat</p>
-    </article>
-</section>
+<app-sobre-mi />
 
 <app-proyectos />
 

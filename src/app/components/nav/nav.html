@@ -7,46 +7,33 @@
             <span class="site-nav__icon" aria-hidden="true">
                 @switch (item.icon) {
                 @case ('home') {
-                <svg viewBox="0 0 24 24">
-                    <path d="M4 11.5 12 5l8 6.5" />
-                    <path d="M6.5 10.5V20h11v-9.5" />
-                    <path d="M10 20v-5h4v5" />
-                </svg>
+                <span class="icons material-symbols-outlined">
+                    home
+                </span>
                 }
 
                 @case ('target') {
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 3v3" />
-                    <path d="M12 18v3" />
-                    <path d="M3 12h3" />
-                    <path d="M18 12h3" />
-                    <path d="M8 8.5a5 5 0 1 1 0 7" />
-                    <path d="M16 8.5a5 5 0 1 0 0 7" />
-                </svg>
+                <span class="icons material-symbols-outlined">
+                    person_heart
+                </span>
                 }
 
                 @case ('project') {
-                <svg viewBox="0 0 24 24">
-                    <path d="M7 4h7l3 3v13H7z" />
-                    <path d="M14 4v4h4" />
-                    <path d="M9.5 12h5" />
-                    <path d="M9.5 16h3" />
-                </svg>
+                <span class="icons material-symbols-outlined">
+                    work
+                </span>
                 }
 
                 @case ('tech') {
-                <svg viewBox="0 0 24 24">
-                    <path d="M8 9 4 12l4 3" />
-                    <path d="m16 9 4 3-4 3" />
-                    <path d="m14 6-4 12" />
-                </svg>
+                <span class="icons material-symbols-outlined">
+                    code_xml
+                </span>
                 }
 
                 @case ('contact') {
-                <svg viewBox="0 0 24 24">
-                    <path d="M5 7h14v10H5z" />
-                    <path d="m5 8 7 5 7-5" />
-                </svg>
+                <span class="icons material-symbols-outlined">
+                    mail
+                </span>
                 }
                 }
             </span>
@@ -56,4 +43,14 @@
         }
     </nav>
 
+    <aside class="site-nav-status" aria-label="Estado del sistema">
+        <div class="site-nav-status__text">
+            <span>System status</span>
+            <strong>Online</strong>
+        </div>
+
+        <div class="site-nav-status__barcode" aria-hidden="true"></div>
+
+        <span class="site-nav-status__caption">Building the future</span>
+    </aside>
 </div>

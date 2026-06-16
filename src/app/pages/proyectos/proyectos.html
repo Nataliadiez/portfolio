@@ -1,6 +1,6 @@
 <section class="projects editorial-section panel-frame" id="proyectos">
     <aside class="rail projects__rail" aria-hidden="true" style="--rail-color: var(--teal)">
-        <span class="rail__number">02</span>
+        <span class="rail__number">03</span>
         <span class="rail__word">Proyectos</span>
         <span class="rail__barcode"></span>
         <span class="rail__orb"></span>
@@ -30,12 +30,14 @@
                     <small>{{ project.category }}</small>
                 </div>
 
-                <div class="project-card__preview" [class.project-card__preview--almicida]="project.preview === 'almicida'"
+                <div class="project-card__preview"
+                    [class.project-card__preview--almicida]="project.preview === 'almicida'"
                     [class.project-card__preview--cg]="project.preview === 'cg'"
                     [class.project-card__preview--dashboard]="project.preview === 'dashboard'">
                     @if (project.preview !== 'dashboard') {
                     <strong>{{ project.preview === 'almicida' ? 'ALMICIDA' : 'CG' }}</strong>
-                    <span>{{ project.preview === 'almicida' ? 'TECNOLOGÍA PARA EL CONTROL PROFESIONAL' : 'PRODUCCIONES' }}</span>
+                    <span>{{ project.preview === 'almicida' ? 'TECNOLOGÍA PARA EL CONTROL PROFESIONAL' : 'PRODUCCIONES'
+                        }}</span>
                     } @else {
                     <div class="dashboard-preview" aria-hidden="true">
                         <i></i><i></i><i></i>

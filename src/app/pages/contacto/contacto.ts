@@ -17,20 +17,20 @@ export class Contacto {
   readonly contactInfo: ContactInfo[] = [
     {
       label: 'Email',
-      value: 'hola@natt.dev',
-      href: 'mailto:hola@natt.dev',
+      value: 'nataliajorgelinadiez@gmail.com',
+      href: 'mailto:nataliajorgelinadiez@gmail.com',
       icon: '✉',
     },
     {
       label: 'GitHub',
-      value: 'github.com/natt-diez',
-      href: 'https://github.com/natt-diez',
+      value: 'github.com/Nataliadiez',
+      href: 'https://github.com/Nataliadiez',
       icon: '●',
     },
     {
       label: 'LinkedIn',
       value: 'linkedin.com/in/natt-diez',
-      href: 'https://linkedin.com/in/natt-diez',
+      href: 'https://www.linkedin.com/in/natalia-diez-925488206/',
       icon: 'in',
     },
     {
